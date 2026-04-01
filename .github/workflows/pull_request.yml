@@ -12,12 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Set up code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           show-progress: false
 
       - name: 📦 Setup PNPM
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
         with:
           version: latest
 
@@ -41,12 +41,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Set up code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           show-progress: false
 
       - name: 📦 Setup PNPM
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
         with:
           version: latest
 
@@ -71,21 +71,21 @@ jobs:
       contents: write
     steps:
       - name: 🪙 Convert token
-        uses: actions/create-github-app-token@v2
+        uses: actions/create-github-app-token@v3
         id: generate-token
         with:
           app-id: ${{ secrets.UGRC_RELEASE_BOT_APP_ID }}
           private-key: ${{ secrets.UGRC_RELEASE_BOT_APP_KEY }}
 
       - name: ⬇️ Set up code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           show-progress: false
           ref: ${{ github.head_ref }}
           token: ${{ steps.generate-token.outputs.token }}
 
       - name: 📦 Setup PNPM
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
         with:
           version: latest
 
@@ -120,12 +120,12 @@ jobs:
       pull-requests: write
     steps:
       - name: ⬇️ Set up code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           show-progress: false
 
       - name: 📦 Setup PNPM
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
         with:
           version: latest
 
@@ -142,7 +142,7 @@ jobs:
         run: pnpm run build
 
       - name: 🪙 Convert token
-        uses: actions/create-github-app-token@v2
+        uses: actions/create-github-app-token@v3
         id: generate-token
         with:
           app-id: ${{ secrets.UGRC_RELEASE_BOT_APP_ID }}
